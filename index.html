@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en-GB">
+
+<head>
+  <meta charset="utf-8">
+  <title>DART XI : Differential Algebra and Related Topics XI</title>
+  <meta name="description"
+    content="Differential Algebra and Related Topics XI, 5–9 June 2023, Queen Mary University of London">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#cf2e2e99">
+  <meta name="google-site-verification" content="D0OJkvR0-epfGgGwNzQjPF-CmxhMUHHR7x6MMRxhEGo">
+  <style>
+    html {
+      display: grid;
+      align-items: stretch;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      color: white;
+      background-color: #f69d5c;
+    }
+
+    a {
+      color: white;
+    }
+
+    a:visited {
+      color: white;
+    }
+
+    body {
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(30rem, 1fr));
+      grid-gap: clamp(1rem, 4vmin, 3rem);
+      gap: clamp(1rem, 4vmin, 3rem);
+      padding: clamp(1rem, 3vmin, 2rem);
+      align-items: start;
+      box-sizing: border-box;
+    }
+
+    .background {
+      position: fixed;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 100lvw;
+      height: 100lvh;
+      background-image: url('kolchin-jmiller.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    section {
+      grid-column: 1;
+      grid-row: 1;
+      padding: 1em 1.5em;
+      line-height: 1.6;
+      display: none;
+      background-color: #cf2e2e99;
+      justify-self: left;
+    }
+
+    @media (prefers-contrast: more) {
+      .background {
+        filter:brightness(50%);
+      }
+
+      section {
+        background-color: hsla(0, 64%, 25%, 0.6);
+      }
+    }
+
+    ul {
+      padding-inline-start: 40px;
+      padding-inline-end: 40px;
+    }
+
+    header>h1 {
+      font-size: clamp(2em, 8vw, 4em);
+      margin: 0;
+      margin-top: auto;
+      line-height: 1.2;
+    }
+
+    header {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      font-size: 1.125em;
+      align-self: flex-start;
+      justify-self: right;
+      max-width: 40rem;
+      min-height: calc(100vh - clamp(2rem,6vmin,4rem) - 1em);
+      padding-bottom: 1em;
+      position: sticky;
+      top: clamp(1rem, 3vmin, 2rem);
+    }
+
+    .contacts {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 1em;
+      gap: 1em;
+    }
+
+    .contacts>* {
+      flex-basis: 0;
+      flex-grow: 1;
+    }
+
+    .registration, .postersubmission {
+      display: none;
+    }
+
+    nav>ul {
+      list-style-type: none;
+      display: flex;
+      gap: 1em;
+      padding: 0;
+      margin: 0;
+      margin-block: 0;
+      flex-wrap: wrap;
+    }
+
+    nav>ul>li {
+      display: inline-block;
+    }
+
+    #home {
+      display: block;
+    }
+
+    section:target {
+      display: block;
+    }
+
+    section:target~#home {
+      display: none;
+    }
+
+    #schedule {
+      justify-self: stretch;;
+    }
+
+    #schedule ul {
+      list-style: none;
+      padding-inline-start: 0;
+      padding-inline-end: 0;
+    }
+
+    #schedule details {
+      font-size: inherit;
+    }
+
+    #schedule summary {
+      list-style: none;;
+      cursor: pointer;
+    }
+
+    #schedule summary::after {
+      content: '(+)';
+      font-family: 'Courier New', Courier, monospace;
+      margin-left: 0.3em;
+    }
+
+    #schedule details[open] summary::after {
+      content: '(–)';
+    }
+
+    #schedule summary::-webkit-details-marker {
+      display: none;
+    }
+
+    #schedule time {
+      font-variant-numeric: tabular-nums;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    #schedule ul p, #schedule ul ol, #schedule ul h4 {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+
+    #schedule time+time::before {
+      content: "–";
+    }
+
+    a.slides::before {
+      content: "📄";
+      display: inline-block;
+    }
+
+    @media screen and (max-width: 34rem),
+      screen and (max-width: 80rem) and (min-width: 67em) {
+      #schedule time+time {
+        vertical-align: super;
+        font-size: xx-small;
+      }
+
+      #schedule time+time::before {
+        content: initial;
+      }
+    }
+
+    /* max-width: 4rem (padding) + 60rem (columns) + 3rem (gap) */
+    @media print, screen and (max-width: 67rem) {
+      html {
+        align-items: start;
+      }
+
+      body {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        grid-row: 2;
+        justify-self: stretch;
+      }
+
+      header {
+        align-items: center;
+        justify-self: center;
+        grid-column: 1;
+        text-align: center;
+        position: initial;
+        top: initial;
+        min-height: initial;
+      }
+
+      header>h1 {
+        margin-top: 0;
+      }
+
+      .contacts {
+        justify-items: center;
+      }
+
+      nav>ul {
+        justify-content: center;
+      }
+    }
+
+    @media print {
+      html, section {
+        background-color: white;
+        color: black;
+      }
+
+      header>h1 {
+        font-size: 3rem;
+      }
+
+      .background, header>nav, .registration, .postersubmission, summary::after {
+        display: none;
+      }
+
+      a, a:visited {
+        color: black;
+      }
+
+      a[href]::after {
+        content: "<" attr(href) ">";
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      a[href^="mailto:"]::after, a[href^="https://arxiv.org/abs"]::after {
+        display: none;
+      }
+
+    }
+
+  </style>
+  <script>
+    preventScroll = function (event) {
+      var scrollTop = document.documentElement.scrollTop;
+      window.location.hash = event.target.hash;
+      document.documentElement.scrollTop = scrollTop;
+      event.preventDefault();
+    }
+  </script>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+
+<body>
+  <div class="background"></div>
+  <header itemscope itemtype="https://schema.org/Event">
+    <h1 itemprop="name">Differential Algebra&nbsp;and Related Topics&nbsp;XI</h1>
+    <div><time itemprop="startDate" content="2023-06-05" datetime="2023-06-05">5</time>–<time itemprop="endDate"
+        content="2023-06-09" datetime="2023-06-09">9 June 2023</time></div>
+    <div class="registration"><a
+      href="https://docs.google.com/forms/d/e/1FAIpQLSejMXRtOxl8rTzX6QlCyOoGe6lYOGBeQI4ttA7zOuKkMM68GA/viewform?usp=sf_link"><b>Register here</b></a> (Extended deadline&nbsp;15&nbsp;May&nbsp;2023)</div>
+    <div class="postersubmission"><a
+      href="https://easychair.org/my/conference?conf=dart2023"><b>Submit a poster here</b></a> (extended&nbsp;deadline&nbsp;1&nbsp;May&nbsp;2023)</div>
+    <div itemprop="location" itemscope itemtype="http://schema.org/Place" class="contacts">
+      <div itemprop="name">Maths Lecture&nbsp;Theatre<br>School of Mathematical&nbsp;Sciences<br>Queen Mary University&nbsp;of&nbsp;London</div>
+    </div>
+    <div itemprop="organizer" itemscope itemtype="http://schema.org/Organization">
+      <div>Contact: <a itemprop="email" href="mailto:dartXI@qmul.ac.uk">dartXI@qmul.ac.uk</a></div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="" onclick="preventScroll(event)">Home</a></li>
+        <li><a href="#schedule" onclick="preventScroll(event)">Schedule</a></li>
+        <li><a href="#committees" onclick="preventScroll(event)">Committees</a></li>
+        <li><a href="#speakers" onclick="preventScroll(event)">Speakers</a></li>
+        <li><a href="#accom" onclick="preventScroll(event)">Accommodation</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="schedule">
+    <h2>Schedule</h2>
+    <strong>All talks are in MLT, Maths Lecture Theatre (Maths Building)</strong>
+    <h3>Monday 05/06</h3>
+    <ul>
+      <li><details><summary><time>09:00</time><time>09:45</time> <b>Boulier:</b> Algebra and Kolchin’s Irreducibility Theorem <a class="slides" href="slides/Boulier.pdf" title="slides"></a><a class="slides" href="slides/Boulier Demo.pdf" title="slides"></a></summary>
+        <p>In this talk, I will present two subjects on which I have worked recently: the DifferentialAlgebra project, which is an open source software dedicated to the elimination theory in Differential Algebra, based on the BLAD libraries, and hosted in <a href="https://codeberg.org/francois.boulier/DifferentialAlgebra" target="_blank" rel="noopener">this git repository</a> and a joint work with colleagues from Univ. Lille and Univ. Rennes which aims at reformulating Kolchin's proof of the Irreducibility Theorem given in [Kolchin1973, Chap. IV, Proposition 10, page 200] using Arc Schemes. The Arc Schemes aspects of this joint work will however not be addressed in this talk.</p>
+        <p><a class="slides" href="slides/Boulier.pdf" title="slides">Slides</a></p>
+        <p><a class="slides" href="slides/Boulier Demo.pdf" title="software demo">Slides</a></p>
+        </details></li>
+      <li><details><summary><time>09:55</time><time>10:40</time> <b>Freitag:</b> Binding Groups and Differential Algebra</summary>
+        <p>We will survey some of the work from the past several years on new connections between the model theory of groups and differential equations. Following the setup, we will discuss algebraic relations between solutions of several different differential equations, proving a conjecture of Borovik-Deloro in the setting of differentially closed fields, and several open problems.
+        </p>
+      </details></li>
+      <li><time>10:40</time><time>11:40</time> Coffee</li>
+      <li><details><summary><time>11:40</time><time>12:25</time> <b>Romanovski:</b> Integrability of Polynomial Vector Fields <a class="slides" href="slides/Romanovski.pdf" title="slides"></a></summary>
+        <p>We discuss the  problem of local  integrability  of polynomial vector fields in a neighborhood of resonant  singular point. The main attention is paid to the case of planar vector fields with \(1:-1\) resonant singular points. An efficient  method to compute the necessary conditions of integrability based on a specific grading of the formal power series module and reducing to a difference equation is presented. A few mechanisms of integrability are described. A connection to the local 16th Hilbert problem is mentioned.</p>
+        <h4>References</h4>
+        <ol>
+          <li>V. G. Romanovski and D. S. Shafer.<em>The Center and Cyclicity Problems: A Computational Algebra Approach.</em>
+          Birkhäuser, Boston, 2009.</li>
+          <li>T. Petek and V. G. Romanovski. <em>Computation of Normal Forms for Systems with Many Parameters.</em> <a href="https://arxiv.org/abs/2305.01739" target="_blank" rel="noopener">arXiv:2305.01739</a>,
+          2023</li>
+        </ol>
+        <p><a class="slides" href="slides/Romanovski.pdf" title="slides">Slides</a></p>
+      </details></li>
+      <li><time>12:25</time><time>15:00</time> Lunch+discussion</li>
+      <li><details><summary><time>15:00</time><time>15:45</time> <b>Dufresne:</b> Structural and Practical Identifiability of ERK Kinetics <a class="slides" href="slides/Dufresne.pdf" title="slides"></a></summary>
+        <p>This talk is based on a paper written in collaboration with Lewis Marsh, Helen Byrne and Heather Harrington, where we explored the algebra, geometry and topology of ERK kinetics. The MEK/ERK signalling pathway is involved in cell division, cell specialisation, survival and cell death. We studied a polynomial dynamical system describing the dynamics of MEK/ERK proposed by Yeung et al. with their experimental setup, data and known biological information. The experimental dataset is a time-course of ERK measurements in different phosphorylation states following activation of either wild-type MEK or MEK mutations associated with cancer or developmental defects. My focus in this talk will be on identifiability, both structural and practical. Structurally identifiable is concerned with asking whether parameter values can be recovered from perfect data. Practical identifiability addresses the more realistic situation where we assume there is measurement noise. We observe that the original model is structurally but not practically identifiable. We will discuss how algebraic quasi-steady state approximation leads to a smaller simpler model which is both structurally and practically identifiable, while providing a probable explanation for the practical non-identifiability of the original model.</p>
+        <p><a class="slides" href="slides/Dufresne.pdf" title="slides">Slides</a></p>
+        </details></li>
+      <li><time>15:45</time><time>16:15</time> Coffee</li>
+      <li><details><summary><time>16:15</time><time>17:00</time> <b>Aroca</b></summary></details></li>
+    </ul>
+    <h3>Tuesday 06/06</h3>
+    <ul>
+      <li><details><summary><time>09:00</time><time>09:45</time> <b>Ceccherini-Silberstein:</b> An Invitation to Symbolic Dynamics on Groups <a class="slides" href="slides/Ceccherini-Silberstein.pdf" title="slides"></a></summary>
+      <p>The purpose of this talk is to present an introduction to symbolic dynamics (subshifts and cellular automata) where the universe is a general group.
+      Group properties such as amenability (a notion going back to von Neumann (1929)) and soficity (introduced by Gromov and B. Weiss (1999)) play a fundamental role in the interplay between the geometric, combinatorial, and algebraic properties of the acting group and the dynamical properties of the corresponding symbolic dynamical systems. I'll discuss the Garden of Eden theorem and the Gromov-Weiss surjunctivity theorem and their linear versions as well as the relation with a celebrated conjecture by Kaplansky on the structure of group rings.</p>
+      <p><a class="slides" href="slides/Ceccherini-Silberstein.pdf" title="slides">Slides</a></p>
+        </details></li>
+      <li><details><summary><time>09:55</time><time>10:40</time> <b>Phung:</b> Some interactions between Algebra, Groups, and Symbolic Dynamics</summary>
+        <p> My talk continues the presentation of Tullio Ceccherini-Silberstein and discusses some further interactions between algebra and symbolic dynamics on groups. I will first explain how to use linear symbolic dynamics to obtain a new conceptual proof of Hall's theorem on the Notherianity of the group algebra \(k[G]\) for every polycyclic-by-finite group \(G\). Then I will discuss some recent work on the interplay between extensions of the Garden of Eden theorem, the Gromov-Weiss surjunctivity theorem, and a conjecture of Kaplansky on the structure of group rings.</p>
+      </details></li>
+      <li><time>10:40</time><time>11:40</time> Coffee</li>
+      <li><details><summary><time>11:40</time><time>12:25</time> <b>Rahkooy</b></summary></details></li>
+      <li><time>12:25</time><time>15:00</time> Lunch+discussion</li>
+      <li><details><summary><time>14:00</time><time>15:00</time> Informal discussion (<b>Tomasic/Wibmer</b>): Difference Algebra and Symbolic Dynamics</summary></details></li>
+      <li><details><summary><time>15:00</time><time>15:45</time> <b>Roques:</b> Around Mahler Equations</summary>
+        <p>In this talk, we will report on some recent results about linear Mahler equations. We will notably speak about automata, difference Galois theory, Hahn series. No prerequisite is required.</p>
+      </details></li>
+      <li><time>15:45</time><time>16:15</time> Coffee</li>
+      <li><details><summary><time>16:15</time><time>17:00</time> <b>Du/Chen:</b> Hermite Reduction for D-finite Functions via Integral Bases <a class="slides" href="slides/Du.pdf" title="slides"></a></summary>
+        <p>Trager's Hermite reduction solves the integration problem for algebraic functions via integral bases. A generalization of this algorithm to D-finite functions has so far been limited to the Fuchsian case.
+        In this talk, we remove this restriction and propose a reduction algorithm based on integral bases that is applicable to arbitrary D-finite functions.</p>
+        <p><a class="slides" href="slides/Du.pdf" title="slides">Slides</a></p>
+      </details></li>
+      <li><time>17:00</time><time>17:20</time> Poster session</li>
+      <li><time>17:20</time> Reception</li>
+    </ul>
+    <h3>Wednesday 07/06</h3>
+    <ul>
+      <li><details><summary><time>09:00</time><time>09:45</time> <b>Chen:</b> Dynamics in Symbolic Integration and Summation <a class="slides" href="slides/Chen.pdf" title="slides"></a></summary>
+        <p>This talk aims at motivating a dynamical aspect of symbolic integration and summation by studying some stability problems on iterated integration and summation of special functions. We first show some basic properties of stable functions in differential and difference fields and then characterize several special families of stable functions including rational functions, logarithmic functions, hyperexponential functions and hypergeometric terms. After that, we prove that all D-finite power series and P-recursive sequences are eventually stable. Some problems for future studies are proposed towards deeper dynamical studies in differential and difference algebra. This talk is based on my recent work joint with Ruyong Feng, Zewang Guo, Xiuyun Li and Wei Lu.</p>
+        <p><a class="slides" href="slides/Chen.pdf" title="slides">Slides</a></p>
+        </details></li>
+      <li><details><summary><time>09:55</time><time>10:40</time> <b>Jaoui:</b> On the Density of Strongly Minimal Algebraic Vector Fields <a class="slides" href="slides/Jaoui.pdf" title="slides"></a></summary>
+        <p>The notion of strongly minimal algebraic differential equation is one of the central concepts lying at the intersection between differential algebra and model theory.  While already in the nineties, Hrushovski and Sokolovic obtained a robust classification of the transcendance properties of the solutions of such algebraic differential equations, a key difficulty that remains is to produce interesting families of  algebraic differential equations to which this classification can be applied.</p>
+        <p>I will describe a recent result which states that “almost all” complex algebraic vector fields  (in a sense that will be made precise in my talk)  are strongly minimal.  One of the key ingredients behind the stage is a geometric analysis of complex algebraic vector fields with at least one non resonant singular point that I will explain precisely during my talk.</p>
+        <p><a class="slides" href="slides/Jaoui.pdf" title="slides">Slides</a></p>
+        </details></li>
+      <li><time>10:40</time><time>11:40</time> Coffee</li>
+      <li><details><summary><time>11:40</time><time>12:25</time> <b>Bortner:</b> Identifiability of Linear Compartmental Tree Models <a class="slides" href="slides/Bortner.pdf" title="slides"></a></summary>
+        <p>Recovering parameter values from mathematical models is a primary interest of those that use them to model the physical and biological world.  This recovery, or <em>identification</em>, of parameters within models, is also an interesting mathematical problem that we call <em>Identifiability</em>.  In this talk, we will explore the identifiability of a specific type of model called Linear Compartmental Models using an algebraic and combinatoric approach.</p>
+      <p><a class="slides" href="slides/Bortner.pdf" title="slides">Slides</a></p>
+        </details></li>
+      <li><time>12:25</time> Discussion</li>
+    </ul>
+    <h3>Thursday 08/06</h3>
+    <ul>
+      <li><details><summary><time>09:30</time><time>10:15</time> <b>Joldes:</b> On Moment Problems with Holonomic Functions</summary>
+        <p>Many reconstruction algorithms from moments of algebraic data were developed in optimization, analysis or statistics. Lasserre and Putinar proposed an exact reconstruction algorithm for the algebraic support of the Lebesgue measure, or of measures with density equal to the exponential of a known polynomial. Their approach relies on linear recurrences for the moments, obtained using Stokes theorem. In this talk, we discuss an extension of this study to measures with holonomic densities and support with real algebraic boundary. Based on the framework of holonomic distributions and Stokes theorem, our approach computes recurrences for the moments which stay linear w.r.t the coefficients of the polynomial vanishing over the support boundary. This property allows for an efficient reconstruction method (from sufficiently many moments) for both these coefficients and those of the polynomials involved in the holonomic operators which annihilate the density, by solving linear systems only. This is a joint work with Florent Bréhard and Jean-Bernard Lasserre.</p>
+      </details></li>
+      <li><details><summary><time>10:25</time><time>11:10</time> <b>Casale:</b> Algebraic Relations between Solutions of a Differential Equations <a class="slides" href="slides/Casale.pdf" title="slides"></a></summary>
+        <p>In 2004, K. Nishioka proved that if \(y_1,\dots, y_n\) are solutions of \(P_1 : y''= 6 y^2 + x\) and \(\mathrm{tr.deg.}_{C(x)}C(x, y_1,y'_1,\dots, y_n,y'_n) < 2n\), then there exists \(i < j\) such that \(y_i = y_j\). This result was generalized to other Painlevé equation by Nagloo-Pillay.
+        In this talk I will explain how the Galois groupoid of a differential equation can be used to study the algebraic relations between its solutions. Assume a second order equation has a primitive, simple, infinite dimensional Galois groupoid, if \(y_1,..., y_n\) are solutions and \(\mathrm{tr.deg.}_{C(x)}C(x,y_1, y'_1,\dots, y_n, y'_n) < 2n\) then</p>
+        <ol>
+          <li> there exist \(i\) such that \(\mathrm{tr.deg.}_{C(x)}(y_i,y'_i) < 2\), or </li>
+          <li>there exist \(i < j\) such that \(C(x,y_i,y'_i)^{\mathrm{alg}} = C(x, y_j,y'_j)^{\mathrm{alg}}\).</li>
+        </ol>
+        <p><a class="slides" href="slides/Casale.pdf" title="slides">Slides</a></p>
+      </details></li>
+      <li><time>11:10</time><time>11:40</time> Coffee</li>
+      <li><details><summary><time>11:40</time><time>12:25</time> <b>El Manssour</b></summary></details></li>
+      <li><time>12:25</time><time>15:00</time> Lunch+discussion</li>
+      <li><details><summary><time>15:00</time><time>15:45</time> <b>Mishna:</b> Characterizing Transcendence in Combinatorics</summary>
+        <p>The notion of transcendence has captured our interest  for well over a century.  Combinatorics provides an intuitive window to understand it in functions. A combinatorial family is associated to a  series in \(\mathbb{R}[[t]]\) via its generating function wherein the number of objects of size \(n\) is the coefficient of \(t^n\).  Twentieth century combinatorics and theoretical computer science have provided characterizations of classes with rational and algebraic generating functions. Finding natural extensions of these correspondences has been a motivating goal of enumerative combinatorics for several decades. This talk will focus on two well studied classes of transcendental functions: the differentiably finite and differentially algebraic. In particular, I will focus on recent results obtained with Lucia Di Vizio and Gwladys Fernandes on the nature of a series solutions \(f(t)\) to order 1 iterative equations of the form: \(f(R(t))=a(t)f(t)+b(t)\) for rational \(R\), \(a\) and \(b\). Under conditions on \(R\), we show that the solutions are either rational or differentially transcendental. This unifies a collection of results in the literature. We use a Galoisian strategy first developed by Hardouin, which has inspired similar statements in different settings, such as the case that \(R\) is a Mobius transformation, or a Mahler function. I will describe several consequences in combinatorics in the study of trees, walks, and pattern avoiding permutations </p></details></li>
+      <li><time>15:45</time><time>16:15</time> Coffee</li>
+      <li><details><summary><time>16:15</time><time>17:00</time> <b>Padgett:</b> The existential Closedness Problem for Analytic Solutions of Difference Equations</summary>
+        <p>The existential closedness problem for a function \(f\) is to show that a system of complex polynomials in \(2n\) variables always has solutions in the graph of \(f\), except when there is some geometric obstruction. Special cases have be proven for exp, Weierstrass \(\wp\) functions, the Klein \(j\) function, and other important functions in arithmetic geometry using a variety of techniques. Recently, some special cases have also been studied for well-known solutions of difference equations using different methods. There is potential to expand on these results by adapting the strategies used to prove existential closedness results for functions in arithmetic geometry to work for analytic solutions of difference equations</p></details></li></ul>
+    <h3>Friday 09/06</h3>
+    <ul>
+      <li><details><summary><time>09:30</time><time>10:15</time> <b>Rueda:</b> Espectral Problems for Matrix ODOs and Picard-Vessiot Theory <a class="slides" href="slides/Rueda.pdf" title="slides"></a></summary>
+        <p>In this talk, I will present recent joint work with E. Previato and M.A. Zurro [1].</p>
+        <p>We obtained an effective criterion to guaranty the solvability of the eigenvalue problem
+          $$LY = \lambda Y , BY = \mu Y ,\quad \text{(1)}$$
+          for commuting differential operators \(L\) and \(B\) with matrix coefficients (MODOs). It was a vision of E. Previato the convenience of a triple approach combining differential algebra, Picard-Vessiot extensions and representation theory to study spectral problems for commuting differential operators. In this philosophy we unite these techniques for the study of coupled spectral problems for MODOs.</p>
+        <p>The matrix coefficients considered will have entries in an ordinary differential field \(K\), whose field of constants is algebraically closed and of characteristic zero. We restrict to the case where \(L\) is monic and has order one, since according to G. Wilson [2], \(L\) does have order 1 in practically all the most interesting examples. In fact to illustrate our results we present examples involving AKNS. More precisely, the problem addressed is the construction of a new differential elimination tool, a differential resultant for MODOs [1]. This resultant provides the appropriate condition for the spectral problem (1) to have a solution in a Picard-Vessiot extension of \(K\).</p>
+        <p>[1] Previato, E., Rueda S.L., Zurro M.A. (2023). Burchnall-Chaundy polynomials for matrix ODOs and Picard-Vessiot Theory. To appear in Physica D: Nonlienar Phenomena. ArXiv preprint <a href="https://arxiv.org/abs/2210.02788" target="_blank" rel="noopener">arXiv:2210.02788</a>.<br>
+           [2] Wilson, G. (1979). Commuting flows and conservation laws for Lax equations. Math. Proc. Camb. Phil. Soc. 86, 131–143.</p>
+        <p><a class="slides" href="slides/Rueda.pdf" title="slides">Slides</a></p>
+        </details></li>
+      <li><details><summary><time>10:25</time><time>11:10</time> <b>Ollivier:</b> Chained and Triangular Flat Systems Illustrated by the Aircraft Example <a class="slides" href="slides/Ollivier.pdf" title="slides"></a></summary>
+        <p>For a set \(\Sigma\) of \(n\) differential equations \(P_{i}\) in \(n\) variables \(x_{i}\), we define the order matrix \((a_{i,j})\), where \(a_{i,j}:= \mathrm{ord}_{x_{j}}P_{i}\). Under regularity hypotheses, it is known that the order of solutions of the system \(\Sigma\) is bounded by Jacobi's number \(\mathcal{O}_{\Sigma}:=\max_{\sigma_{\in S_{n}}}\sum_{i=1}^{n}a_{i,\sigma(i)}\), with equality if some Jacobian determinant, called the system determinant \(\nabla_{\Sigma}\) does not vanish.</p>
+        <p>We investigate a class of flat system that generalizes various notions of chained or triangular flat systems. Those are systems with a saddle Jacobi number equal to \(0\), where the saddle Jacobi number is the smallest Jacobi number for all subsets \(Y\subset X\) of the set of variable with a cardinal equal to the number of equations. Furthermore, the system determinant according to this subset \(Y\) must be non zero. The flat outputs are then the variables in the complementary set \(Z:=X\setminus Y\). They appear to be systems such that the flat outputs may be chosen among the state variables and a lazy flat parametrization can be computed without using strict derivatives of the system equations. This means that the flat parametrization can be computed fast. We call those systems <em>oudephippical</em> or \(\bar{o}\)-systems.</p>
+        <p>We provide polynomial time algorithms to test if the saddle Jacobi number of a system is \(0\) and if there exists a subset \(Y\) with a Jacobi number equal to \(0\) and a non vanishing system determinant. Those systems are illustrated with the aircraft example. We show that its equations are flat after some simplifications and provide new flat outputs, showing that the only flat singularities correspond to stalling conditions. Numerical simulation show that a suitable feedback allows to compensate model errors and we also consider a notion of generalized flatness for the original system without simplifications. (Joint work with Yirmeyahu J. Kaminski, Holon Institute of Technology, Holon, Israel)</p>
+        <p><a class="slides" href="slides/Ollivier.pdf" title="slides">Slides</a></p>
+        </details></li>
+      <li><time>11:10</time><time>11:40</time> Coffee</li>
+      <li><details><summary><time>11:40</time><time>12:25</time> <b>Scanlon</b></summary></details></li>
+      <li><time>12:25</time> End of conference</li>
+    </ul>
+  </section>
+
+  <section id="committees">
+    <h2>Programme committee</h2>
+    <ul>
+      <li><a href="https://perso.math.univ-toulouse.fr/hardouin/" target="_blank" rel="noopener" lang="fr">Charlotte
+          Hardouin</a> (Toulouse)</li>
+      <li><a href="http://www.kauers.de/" target="_blank" rel="noopener" lang="de">Manuel Kauers</a> (Linz)</li>
+      <li><a href="http://mmrc.iss.ac.cn/~weili/" target="_blank" rel="noopener">Wei Li <span lang="zh">(李伟)</span></a>
+        (Chinese Academy of Sciences)</li>
+      <li><a href="https://www.scu.edu/cas/mathcs/faculty-and-staff/nicolette-meshkat/" target="_blank"
+          rel="noopener">Nikki Meshkat</a> (Santa Clara University)</li>
+      <li><a href="https://qcpages.qc.cuny.edu/~aovchinnikov/" target="_blank" rel="noopener" lang="ru">Alexey
+          Ovchinnikov</a> (City University of New York)</li>
+      <li><a href="https://www3.nd.edu/~apillay/" target="_blank" rel="noopener">Anand Pillay</a> (Notre Dame)</li>
+      <li><a href="https://webspace.maths.qmul.ac.uk/i.tomasic/" target="_blank" rel="noopener" lang="hr">Ivan
+          Toma&scaron;i&cacute;</a> (Queen Mary University of London)</li>
+    </ul>
+    <h2>Organising committee</h2>
+    <ul>
+      <li><a href="https://sites.google.com/view/sebastianeterovic/home" target="_blank" rel="noopener"
+          lang="es">Sebastian Eterovi&cacute;</a> (University of Leeds)</li>
+      <li><a href="https://personalpages.manchester.ac.uk/staff/omar.sanchez/" target="_blank" rel="noopener"
+          lang="es">Omar Léon Sánchez</a> (University of Manchester)</li>
+      <li><a href="https://eps.leeds.ac.uk/maths/staff/4058/dr-vincenzo-l-mantova" target="_blank" rel="noopener"
+          lang="it">Vincenzo Mantova</a> (University of Leeds)</li>
+      <li><a href="https://qcpages.qc.cuny.edu/~aovchinnikov/" target="_blank" rel="noopener" lang="ru">Alexey
+          Ovchinnikov</a> (City University of New York)</li>
+      <li><a href="https://www3.nd.edu/~apillay/" target="_blank" rel="noopener">Anand Pillay</a> (Notre Dame)</li>
+      <li><a href="https://math.berkeley.edu/~scanlon/" target="_blank" rel="noopener">Thomas Scanlon</a> (UC Berkeley)
+      </li>
+      <li><a href="https://webspace.maths.qmul.ac.uk/i.tomasic/" target="_blank" rel="noopener" lang="hr">Ivan
+          Toma&scaron;i&cacute;</a>
+        (Queen Mary University of London)</li>
+      <li><a href="https://sites.google.com/view/wibmer" target="_blank" rel="noopener" lang="de">Michael Wibmer</a>
+        (Graz University of Technology)</li>
+    </ul>
+  </section>
+  <section id="speakers">
+    <h2>Confirmed speakers</h2>
+    <ul>
+      <li lang="es">Fuensanta Aroca</li>
+      <li>Cash Bortner</li>
+      <li lang="fr">François Boulier</li>
+      <li lang="fr">Guy Casale</li>
+      <li lang="it">Tullio Ceccherini-Silberstein</li>
+      <li lang="zh">Shaoshi Chen</li>
+      <li>Adele Padgett</li>
+      <li lang="fr">Emilie Dufresne</li>
+      <li lang="ar">Rida Ait El Manssour</li>
+      <li>James Freitag</li>
+      <li lang="fa">Hamid Rahkooy</li>
+      <li lang="fr">Rémi Jaoui</li>
+      <li lang="ro">Mioara Joldes</li>
+      <li>Mishna Marni</li>
+      <li lang="fr">François Ollivier</li>
+      <li lang="vi">Xuan Kien Phung</li>
+      <li lang="ru">Valery Romanovski</li>
+      <li lang="fr">Julien Roques</li>
+      <li lang="es">Sonia Rueda</li>
+      <li>Thomas Scanlon</li>
+    </ul>
+  </section>
+  <section id="accom">
+    <h2>Accommodation</h2>
+    <p>Due to rapidly increasing prices for summer 2023 in London, participants are encouraged to book their accommodation as early as possible.
+      The key is to shop around, and not to worry if you find a hotel which is several tube or bus stops away, the transportaion is usually very efficient.
+      The organisers would like to point out the following options among the huge variety of other possibilities.</p>
+    <p>Speakers and participants expecting to be reimbursed by QMUL should book at most 3* hotels.</p>
+    <ul>
+      <li><a href="https://www.travelodge.co.uk" target="_blank" rel="noopener">Travelodge</a></li>
+      <li><a href="https://www.thecherry-e3.co.uk/hotel" target="_blank" rel="noopener">Dirty Liquor</a></li>
+      <li><a href="https://www.universityrooms.com/" target="_blank" rel="noopener">University Rooms</a></li>
+      <li><a href="https://www.qmul.ac.uk/residences/college/academicflats/" target="_blank" rel="noopener">QMUL Accommodation recommendations (see bottom of page)</a></li>
+    </ul>
+  </section>
+  <section id="home">
+    <p>Registrations are now open: <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLSejMXRtOxl8rTzX6QlCyOoGe6lYOGBeQI4ttA7zOuKkMM68GA/viewform?usp=sf_link" target="_blank" rel="noopener">registration form</a>. Please register by 15 May 2023, 23:59 London time.</p>
+    <h2>The DART series</h2>
+    <p>Based on the foundational works of Joseph Fels Ritt and Ellis Robert Kolchin, differential algebra has evolved
+      into an extremely rich subject during the last two decades. <strong>Differential Algebra and Related
+        Topics</strong> (DART) is a series of workshops which offer an opportunity for participants to present original
+      research, to learn of research progress and new developments, and to exchange ideas and views on differential
+      algebra and related topics. The eleventh addition of the DART series will be hosted in the School of Mathematical
+      Sciences at Queen Mary University of London.</p>
+    <p>A related meeting: <a href="https://www.math.uni.wroc.pl/~dobrowol/conferences/2023/workshop.html"
+        target="_blank" rel="noopener">Model theory and related topics</a>, 3–7 July 2023.</p>
+    <h2>Previous DART conferences</h2>
+    <ul>
+      <li><a href="https://fsw01.bcc.cuny.edu/joel.nagloo/DART10.html" target="_blank" rel="noopener">DART X</a>, CUNY,
+        New York City, USA, 2020</li>
+      <li><a href="https://conferences.leeds.ac.uk/dart9/" target="_blank" rel="noopener">DART IX</a>, Leeds, United
+        Kingdom,
+        2018</li>
+      <li><a href="http://www.algebra.uni-linz.ac.at/dart8/" target="_blank" rel="noopener">DART VIII</a>, Linz,
+        Austria,
+        2017</li>
+      <li><a href="https://fsw01.bcc.cuny.edu/joel.nagloo/DART7.html" target="_blank" rel="noopener">DART VII</a>, CUNY,
+        New
+        York City, USA, 2016</li>
+      <li><a href="http://www.mmrc.iss.ac.cn/~dart6/" target="_blank" rel="noopener">DART VI</a>, Beijing, China, 2015
+      </li>
+      <li><a href="https://www.cristal.univ-lille.fr/DARTV/pmwiki/pmwiki.html" target="_blank" rel="noopener">DART
+          V</a>, Lille, France,
+        2013</li>
+      <li><a href="http://www.mmrc.iss.ac.cn/~dart4/index.html" target="_blank" rel="noopener">DART IV</a>, Beijing,
+        China,
+        2010</li>
+      <li><a href="http://andromeda.rutgers.edu/~liguo/DARTIII/diffalg.html" target="_blank" rel="noopener">DART
+          III</a>,
+        Rutgers University, Newark, USA, 2008</li>
+      <li><a href="http://andromeda.rutgers.edu/~liguo/DARTII/diffalg.html" target="_blank" rel="noopener">DART II</a>,
+        Rutgers University, Newark, USA, 2007</li>
+      <li><a href="http://andromeda.rutgers.edu/~liguo/DiffAlg/diffalg.html" target="_blank" rel="noopener">DART I</a>,
+        Rutgers University, Newark, USA, 2000</li>
+    </ul>
+  </section>
+</body>
+
+</html>
